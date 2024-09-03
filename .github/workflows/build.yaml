@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '* * * * 0' # Every monday
 
+permissions:
+  packages: write
+  contents: read
+
 jobs:
   sync-images:
     runs-on: ubuntu-latest
