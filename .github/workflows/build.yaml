@@ -23,5 +23,5 @@ jobs:
       - name: Update ghcr.io/${{ github.repository_owner }}/node:${{ matrix.tag }}
         run: |
           docker pull docker.io/library/node:${{ matrix.tag }}
-          docker tag docker.io/library/${{ matrix.version }} ghcr.io/${{ github.repository_owner }}/node:${{ matrix.tag }}
+          docker tag docker.io/library/node:${{ matrix.tag }} ghcr.io/${{ github.repository_owner }}/node:${{ matrix.tag }}
           docker push ghcr.io/${{ github.repository_owner }}/node:${{ matrix.tag }}
