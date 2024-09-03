@@ -22,9 +22,9 @@ jobs:
       matrix:
         include:
           - BASE_IMAGE: "node:22.7-bookworm-slim"
-            TAG_VERSION: "22.7"
+            TAG_VERSION: "22"
           - BASE_IMAGE: "node:20.17-bookworm-slim"
-            TAG_VERSION: "20.17"
+            TAG_VERSION: "20"
 
     steps:
       - name: Checkout code
