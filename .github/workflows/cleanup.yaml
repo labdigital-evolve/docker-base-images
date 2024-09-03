@@ -2,6 +2,11 @@ name: Delete old container images
 
 on:
   workflow_dispatch:
+    inputs:
+      dry-run:
+        type: boolean
+        description: Whether to perform a dry run
+        default: false
   #schedule:
   #  - cron: '8 0 * * *'
 
@@ -13,12 +18,10 @@ jobs:
       packages: write
     steps:
       - name: Delete old images
-        uses: snok/container-retention-policy@v2
+        uses: snok/container-retention-policy@v3.0.0
         with:
-          image-names: ghcr.io/labdigital-evolve/node
-          cut-off: 1 day ago UTC
-          account-type: org
+          account: ${{ github.repository_owner }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          token-type: github-token
-          untagged-only: true
-          org-name: labdigital
+          image-names: ghcr.io/labdigital-evolve/node
+          cut-off: 4w
+          dry-run: ${{ github.event.inputs.dry-run }}
