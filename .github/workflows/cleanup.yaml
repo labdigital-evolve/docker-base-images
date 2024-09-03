@@ -1,0 +1,24 @@
+name: Delete old container images
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '8 0 * * *'
+
+jobs:
+  clean-ghcr:
+    name: Delete old unused container images
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old images
+        uses: snok/container-retention-policy@v2
+        with:
+          image-names: ghcr.io/labdigital-evolve/node
+          cut-off: 1 day ago UTC
+          account-type: org
+          token: ${{ secrets.GITHUB_TOKEN }}
+          token-type: github-token
+          untagged-only: true
+          org-name: labdigital
