@@ -10,6 +10,10 @@ on:
   #schedule:
   #  - cron: '8 0 * * *'
 
+permissions:
+  packages: write
+  contents: read
+
 jobs:
   clean-ghcr:
     name: Delete old unused container images
@@ -22,6 +26,6 @@ jobs:
         with:
           account: ${{ github.repository_owner }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          image-names: ghcr.io/labdigital-evolve/node
+          image-names: ghcr.io/${{ github.repository_owner }}/node
           cut-off: 4w
           dry-run: ${{ github.event.inputs.dry-run }}
