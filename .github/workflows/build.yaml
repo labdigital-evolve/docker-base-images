@@ -23,6 +23,8 @@ jobs:
         include:
           - BASE_IMAGE: "node:22.7-bookworm-slim"
             TAG_VERSION: "22.7"
+          - BASE_IMAGE: "node:22.6-bookworm-slim"
+            TAG_VERSION: "22.6"
           - BASE_IMAGE: "node:20.17-bookworm-slim"
             TAG_VERSION: "20.17"
 
