@@ -29,6 +29,8 @@ jobs:
             TAG_VERSION: "22.6"
           - BASE_IMAGE: "node:20.17-bookworm-slim"
             TAG_VERSION: "20.17"
+          - BASE_IMAGE: "node:20.9-bookworm-slim"
+            TAG_VERSION: "20.9"
 
     steps:
       - name: Checkout code
